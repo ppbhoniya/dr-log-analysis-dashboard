@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DR Log Analysis Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>DR Log Analysis</h1>
+            <p>Real-time polling and matching of Disturbance Records across FTP, OTI, and FaultLocation systems.</p>
+        </header>
+
+        <section class="inputs-section glass-panel">
+            <div class="input-group">
+                <label for="ftp-path">1. FTP File Path</label>
+                <input type="text" id="ftp-path" placeholder="e.g. e:\Project AI\Sample FTP file\FTP.exe_1" value="e:\Project AI\Sample FTP file\FTP.exe_1">
+            </div>
+            <div class="input-group">
+                <label for="oti-path">2. OTI File/Folder Path</label>
+                <input type="text" id="oti-path" placeholder="e.g. e:\Project AI\Sample FTP file\etap-notifier-20260319_0.log" value="e:\Project AI\Sample FTP file\etap-notifier-20260319_0.log">
+            </div>
+            <div class="input-group">
+                <label for="fl-path">3. FaultLocation Folder Path</label>
+                <input type="text" id="fl-path" placeholder="e.g. e:\Project AI\Sample FTP file\FaultLocation-20260319.log" value="e:\Project AI\Sample FTP file\FaultLocation-20260319.log">
+            </div>
+            <div class="btn-group">
+                 <button id="start-btn" class="primary-btn">Start Polling (60s)</button>
+                 <div id="status-indicator">Idle</div>
+            </div>
+        </section>
+
+        <section class="summary-section">
+            <div class="summary-card glass-panel count-total">
+                <div class="label">Total DR Files Processed</div>
+                <div class="value" id="count-total">0</div>
+            </div>
+            <div class="summary-card glass-panel count-matched">
+                <div class="label">Matched in All</div>
+                <div class="value" id="count-matched">0</div>
+            </div>
+            <div class="summary-card glass-panel count-missing">
+                <div class="label">Missing/Errors</div>
+                <div class="value" id="count-missing">0</div>
+            </div>
+        </section>
+
+        <section class="table-section glass-panel">
+            <div class="table-header-row">
+                <h2>Log Details</h2>
+                <span class="last-updated" id="last-updated">Never updated</span>
+            </div>
+            <div class="table-container">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>DR File Name</th>
+                            <th>Device ID</th>
+                            <th>IP Address</th>
+                            <th>FTP</th>
+                            <th>OTI</th>
+                            <th>FaultLocation</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                         <tr>
+                            <td colspan="8" class="empty-state">Enter paths and start polling...</td>
+                         </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
